@@ -30,12 +30,11 @@ namespace SimpleCalculator
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            //simple basic validation
-            if (textBox1Number1.Text == "")
+            
+            if (textBox1Number1.Text == "" || textBoxNumber2.Text == "")
             {
 
-                //HOMEWORK NOT ALLOW TEXTBOX2 ACCEPT EMPTY  IF STETAMENT
-                MessageBox.Show("Number 1 is required", "Missing value");
+                MessageBox.Show("Number 1 or Number 2 is required", "Missing value");
                 textBox1Number1.Focus();
             }
             else
@@ -49,21 +48,27 @@ namespace SimpleCalculator
 
         private void buttonSubstraction_Click(object sender, EventArgs e)
         {
-            //simple basic validation
+            
             if (textBox1Number1.Text == "")
 
             {
-                //HOMEWORK NOT ALLOW TEXTBOX2 ACCEPT EMPTY  IF STETAMENT
-
                 MessageBox.Show("Number 1 is required", "Missing value");
                 textBox1Number1.Focus();
+            } else if (textBoxNumber2.Text == "") {
+
+                MessageBox.Show("Number 2 is required", "Missing value");
+                textBoxNumber2.Focus();
+
             }
             else
             {
-                //HOMEWORK NOT ALLOW NEGATIVE NUMBER TIP IF STETAMENT
-
-                MessageBox.Show("The Difference is: " + (Convert.ToInt32(textBox1Number1.Text) -
-                                                         Convert.ToInt32(textBoxNumber2.Text)), "Difference") ;
+                if (Convert.ToInt32(textBox1Number1.Text) < Convert.ToInt32(textBoxNumber2.Text))
+                
+                    MessageBox.Show("The number1 cannot be smaller than number 2", "Difference cannot be negative");
+                
+                    else
+                    MessageBox.Show("The Difference is: " + (Convert.ToInt32(textBox1Number1.Text) -
+                                                             Convert.ToInt32(textBoxNumber2.Text)), "Difference");
             }
         }
     }
